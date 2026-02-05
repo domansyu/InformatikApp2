@@ -1,5 +1,4 @@
 import streamlit as st
-import random
 
 st.set_page_config(page_title="Notenrechner", page_icon="🧮")
 
@@ -77,4 +76,14 @@ if st.session_state.noten:
         n * g for n, g in zip(st.session_state.noten, st.session_state.gewichte)
     )
 
-    durchschnitt = round(gewichtete_summe / ges
+    durchschnitt = round(gewichtete_summe / gesamtgewicht, 2)
+    st.subheader(f"📊 Dein Durchschnitt: {durchschnitt}")
+
+    if durchschnitt <= 2.0:
+        st.success(random.choice(lobtexte))
+    elif durchschnitt <= 3.0:
+        st.info("Gute Arbeit! 👍")
+    elif durchschnitt <= 4.0:
+        st.warning("Da geht noch mehr! 💪")
+    else:
+        st.error("Das war nicht so gut. 🛑")
