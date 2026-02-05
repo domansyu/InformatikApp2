@@ -77,15 +77,4 @@ if st.session_state.noten:
         n * g for n, g in zip(st.session_state.noten, st.session_state.gewichte)
     )
 
-    durchschnitt = round(gewichtete_summe / gesamtgewicht, 1)
-
-    st.subheader("📊 Ergebnis")
-
-    farbe = farbe_fuer_note(round(durchschnitt))
-    st.markdown(
-        f"<h2 style='color:{farbe};'>Durchschnitt: {durchschnitt}</h2>",
-        unsafe_allow_html=True
-    )
-
-    if durchschnitt < 2.0:
-        st.success(random.choice(lobtexte))
+    durchschnitt = round(gewichtete_summe / ges
